@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class RaceServiceImpl implements RaceService {
 
-    final RaceRepository raceRepository;
+    private final RaceRepository raceRepository;
 
     public RaceServiceImpl (RaceRepository raceRepository) {
         this.raceRepository = raceRepository;
@@ -22,7 +22,7 @@ public class RaceServiceImpl implements RaceService {
 
     @Override
     public Race findByID (Integer Id) {
-        return raceRepository.getOne(Id);
+        return raceRepository.findById(Id).get();
     }
 
     @Override
