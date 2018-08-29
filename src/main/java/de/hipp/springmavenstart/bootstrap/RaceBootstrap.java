@@ -1,6 +1,7 @@
 package de.hipp.springmavenstart.bootstrap;
 
 
+import de.hipp.springmavenstart.constants.Races;
 import de.hipp.springmavenstart.enity.Race;
 import de.hipp.springmavenstart.service.RaceService;
 import org.springframework.boot.CommandLineRunner;
@@ -17,12 +18,14 @@ public class RaceBootstrap implements CommandLineRunner {
 
     @Override
     public void run (String... args) throws Exception {
-        Race dwarfs = new Race();
-        dwarfs.setName("Dwarf");
-        raceService.saveRace(dwarfs);
+        for (Races entry : Races.values()) {
+            createRace(entry.toString());
+        }
+    }
 
-        Race humans = new Race();
-        humans.setName("Humans");
-        raceService.saveRace(humans);
+    private void createRace(String raceName) {
+        Race race = new Race();
+        race.setName(raceName);
+        raceService.saveRace(race);
     }
 }
