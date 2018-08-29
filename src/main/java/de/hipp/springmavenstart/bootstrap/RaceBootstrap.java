@@ -19,6 +19,10 @@ public class RaceBootstrap implements CommandLineRunner {
     @Override
     public void run (String... args) throws Exception {
         for (Races entry : Races.values()) {
+            if (entry == null) {
+                // this shouldn't happen but just in case
+                continue;
+            }
             createRace(entry.toString());
         }
     }
