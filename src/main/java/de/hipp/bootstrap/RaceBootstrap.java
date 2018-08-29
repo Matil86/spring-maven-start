@@ -1,18 +1,18 @@
-package de.hipp.springmavenstart.bootstrap;
+package de.hipp.bootstrap;
 
 
-import de.hipp.springmavenstart.constants.Races;
-import de.hipp.springmavenstart.enity.Race;
-import de.hipp.springmavenstart.service.RaceService;
+import de.hipp.constants.Races;
+import de.hipp.enity.Race;
+import de.hipp.service.BaseService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RaceBootstrap implements CommandLineRunner {
 
-    private final RaceService raceService;
+    private final BaseService raceService;
 
-    public RaceBootstrap (RaceService raceService) {
+    public RaceBootstrap(BaseService raceService) {
         this.raceService = raceService;
     }
 
@@ -30,6 +30,6 @@ public class RaceBootstrap implements CommandLineRunner {
     private void createRace(String raceName) {
         Race race = new Race();
         race.setName(raceName);
-        raceService.saveRace(race);
+        raceService.saveEntity(race);
     }
 }

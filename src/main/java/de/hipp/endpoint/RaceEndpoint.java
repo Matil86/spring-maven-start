@@ -1,7 +1,9 @@
-package de.hipp.springmavenstart.endpoint;
+package de.hipp.endpoint;
 
-import de.hipp.springmavenstart.enity.Race;
-import de.hipp.springmavenstart.service.RaceService;
+import de.hipp.constants.EndpointConstants;
+import de.hipp.enity.Race;
+import de.hipp.service.RaceService;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,13 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-@RequestMapping(RaceEndpoint.BASE_URL)
+@RequestMapping(EndpointConstants.RACEENDPOINT)
 public class RaceEndpoint {
 
-    public static final String BASE_URL ="/api/v1/races";
     private final RaceService raceService;
 
     public RaceEndpoint (RaceService raceService) {
@@ -37,6 +36,6 @@ public class RaceEndpoint {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Race saveRace(@RequestBody Race race){
-        return raceService.saveRace(race);
+        return raceService.saveEntity(race);
     }
 }

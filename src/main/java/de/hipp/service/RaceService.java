@@ -1,17 +1,16 @@
-package de.hipp.springmavenstart.service;
+package de.hipp.service;
 
-import de.hipp.springmavenstart.enity.Race;
-import de.hipp.springmavenstart.repo.RaceRepository;
+import de.hipp.enity.Race;
+import de.hipp.repo.RaceRepository;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class RaceServiceImpl implements RaceService {
+public class RaceService implements BaseService<Race> {
 
     private final RaceRepository raceRepository;
 
-    public RaceServiceImpl (RaceRepository raceRepository) {
+    public RaceService(RaceRepository raceRepository) {
         this.raceRepository = raceRepository;
     }
 
@@ -26,7 +25,7 @@ public class RaceServiceImpl implements RaceService {
     }
 
     @Override
-    public Race saveRace (Race race) {
+    public Race saveEntity(Race race) {
         return raceRepository.save(race);
     }
 }

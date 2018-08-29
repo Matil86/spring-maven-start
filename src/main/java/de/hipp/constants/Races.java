@@ -1,4 +1,4 @@
-package de.hipp.springmavenstart.constants;
+package de.hipp.constants;
 
 public enum Races {
 

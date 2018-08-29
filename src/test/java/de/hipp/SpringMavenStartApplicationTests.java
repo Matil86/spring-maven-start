@@ -1,4 +1,4 @@
-package de.hipp.springmavenstart;
+package de.hipp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
