@@ -1,7 +1,7 @@
 package de.hipp.endpoint;
 
 import de.hipp.constants.EndpointConstants;
-import de.hipp.enity.Character;
+import de.hipp.entity.Character;
 import de.hipp.service.CharacterService;
 import java.util.List;
 import org.springframework.http.HttpStatus;

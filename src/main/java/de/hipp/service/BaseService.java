@@ -1,14 +1,14 @@
 package de.hipp.service;
 
-import de.hipp.enity.BaseEntity;
+import de.hipp.entity.BaseEntity;
 import java.util.List;
 
 
 public interface BaseService <T extends BaseEntity> {
 
-    public List<T> findAll();
+    List<T> findAll();
 
-    public T findByID(Integer Id);
+    T findByID(Integer Id);
 
     T saveEntity(T race);
 }

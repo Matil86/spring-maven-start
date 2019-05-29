@@ -1,4 +1,4 @@
-package de.hipp.enity;
+package de.hipp.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Race extends BaseEntity {
+public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

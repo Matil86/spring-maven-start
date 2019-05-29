@@ -1,6 +1,6 @@
 package de.hipp.service;
 
-import de.hipp.enity.Race;
+import de.hipp.entity.Race;
 import de.hipp.repo.RaceRepository;
 import java.util.List;
 import org.springframework.stereotype.Service;

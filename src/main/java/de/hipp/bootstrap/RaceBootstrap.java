@@ -2,7 +2,7 @@ package de.hipp.bootstrap;
 
 
 import de.hipp.constants.Races;
-import de.hipp.enity.Race;
+import de.hipp.entity.Race;
 import de.hipp.service.BaseService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
