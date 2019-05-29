@@ -2,17 +2,17 @@ package de.hipp.bootstrap;
 
 
 import de.hipp.constants.Races;
-import de.hipp.entity.Race;
-import de.hipp.service.BaseService;
+import de.hipp.controller.RaceController;
+import de.hipp.entity.RaceEntity;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RaceBootstrap implements CommandLineRunner {
 
-    private final BaseService raceService;
+    private final RaceController raceService;
 
-    public RaceBootstrap(BaseService raceService) {
+    public RaceBootstrap(RaceController raceService) {
         this.raceService = raceService;
     }
 
@@ -28,8 +28,8 @@ public class RaceBootstrap implements CommandLineRunner {
     }
 
     private void createRace(String raceName) {
-        Race race = new Race();
-        race.setName(raceName);
-        raceService.saveEntity(race);
+        RaceEntity raceEntity = new RaceEntity();
+        raceEntity.setName(raceName);
+        raceService.saveEntity(raceEntity);
     }
 }

@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 @Entity
 @Embeddable
-public class Race extends BaseEntity {
+public class RaceEntity extends BaseEntity {
     private String name;
 }

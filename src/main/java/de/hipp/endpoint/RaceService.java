@@ -1,8 +1,8 @@
 package de.hipp.endpoint;
 
 import de.hipp.constants.EndpointConstants;
-import de.hipp.entity.Race;
-import de.hipp.service.RaceService;
+import de.hipp.controller.RaceController;
+import de.hipp.entity.RaceEntity;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,27 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(EndpointConstants.RACEENDPOINT)
-public class RaceEndpoint {
+public class RaceService {
 
-    private final RaceService raceService;
+    private final RaceController raceController;
 
-    public RaceEndpoint (RaceService raceService) {
-        this.raceService = raceService;
+    public RaceService(RaceController raceController) {
+        this.raceController = raceController;
     }
 
     @GetMapping
-    public List<Race> getAllRaces(){
-        return raceService.findAll();
+    public List<RaceEntity> getAllRaces() {
+        return raceController.findAll();
     }
 
     @GetMapping("{id}")
-    public Race getRaceByID(@PathVariable Integer id){
-        return raceService.findByID(id);
+    public RaceEntity getRaceByID(@PathVariable Integer id) {
+        return raceController.findByID(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Race saveRace(@RequestBody Race race){
-        return raceService.saveEntity(race);
+    public RaceEntity saveRace(@RequestBody RaceEntity raceEntity) {
+        return raceController.saveEntity(raceEntity);
     }
 }

@@ -1,8 +1,8 @@
 package de.hipp.endpoint;
 
 import de.hipp.constants.EndpointConstants;
-import de.hipp.entity.Character;
-import de.hipp.service.CharacterService;
+import de.hipp.controller.CharacterController;
+import de.hipp.entity.CharacterEntity;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,27 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(EndpointConstants.CHARACTERENDPOINT)
-public class CharacterEndpoint {
+public class CharacterService {
 
-    private final CharacterService characterService;
+    private final CharacterController characterController;
 
-    public CharacterEndpoint(CharacterService service) {
-        this.characterService = service;
+    public CharacterService(CharacterController service) {
+        this.characterController = service;
     }
 
     @GetMapping
-    public List<Character> getAllRaces() {
-        return characterService.findAll();
+    public List<CharacterEntity> getAllRaces() {
+        return characterController.findAll();
     }
 
     @GetMapping("{id}")
-    public Character getRaceByID(@PathVariable Integer id) {
-        return characterService.findByID(id);
+    public CharacterEntity getRaceByID(@PathVariable Integer id) {
+        return characterController.findByID(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Character saveRace(@RequestBody Character character) {
-        return characterService.saveEntity(character);
+    public CharacterEntity saveRace(@RequestBody CharacterEntity characterEntity) {
+        return characterController.saveEntity(characterEntity);
     }
 }
