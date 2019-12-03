@@ -1,21 +1,31 @@
 package de.hipp.controller;
 
 import de.hipp.entity.CharacterEntity;
-import java.util.List;
+import de.hipp.repo.CharacterRepository;
+import org.jboss.logging.Logger;
 import org.springframework.stereotype.Service;
 
-@Service
-public class CharacterController {
+import java.util.List;
 
-    public List<CharacterEntity> findAll() {
-        return null;
+@Service
+public class CharacterController implements BaseEntityController<CharacterEntity> {
+
+    private final CharacterRepository characterRepository;
+
+    public CharacterController(CharacterRepository characterRepository) {
+        this.characterRepository = characterRepository;
     }
 
-    public CharacterEntity findByID(Integer Id) {
-        return null;
+    public List<CharacterEntity> findAll() {
+        return characterRepository.findAll();
+    }
+
+    public CharacterEntity findByID(Integer id) {
+        return characterRepository.findById(id).orElse(null);
     }
 
     public CharacterEntity saveEntity(CharacterEntity characterEntity) {
-        return null;
+        Logger.getLogger(this.getClass()).info("saving: " + characterEntity);
+        return characterRepository.save(characterEntity);
     }
 }

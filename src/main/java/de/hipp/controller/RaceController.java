@@ -1,31 +1,34 @@
 package de.hipp.controller;
 
 import de.hipp.entity.RaceEntity;
-import de.hipp.repo.RaceDao;
-import java.util.List;
+import de.hipp.repo.RaceRepository;
+import org.jboss.logging.Logger;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RaceController implements BaseEntityController<RaceEntity> {
 
-    private final RaceDao raceDao;
+    private final RaceRepository raceRepository;
 
-    public RaceController(RaceDao raceDao) {
-        this.raceDao = raceDao;
+    public RaceController(RaceRepository raceRepository) {
+        this.raceRepository = raceRepository;
     }
 
     @Override
     public List<RaceEntity> findAll() {
-        return raceDao.findAll();
+        return raceRepository.findAll();
     }
 
     @Override
     public RaceEntity findByID(Integer Id) {
-        return raceDao.findById(Id).get();
+        return raceRepository.findById(Id).get();
     }
 
     @Override
     public RaceEntity saveEntity(RaceEntity raceEntity) {
-        return raceDao.save(raceEntity);
+        Logger.getLogger(this.getClass()).info("saving: " + raceEntity);
+        return raceRepository.save(raceEntity);
     }
 }
